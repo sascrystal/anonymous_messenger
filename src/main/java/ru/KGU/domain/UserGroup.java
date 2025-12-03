@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
+@IdClass(UserGroupId.class)
 @Table(name = "user_group")
 public class UserGroup {
 

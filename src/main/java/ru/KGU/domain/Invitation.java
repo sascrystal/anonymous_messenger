@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
+@IdClass(InvitationId.class)
 public class Invitation {
 
     @Id
