@@ -37,7 +37,9 @@
                 baseTableName="users_groups"
                 baseColumnNames="group_id"
                 referencedTableName="group"
-                referencedColumnNames="id"/>
+                referencedColumnNames="id"
+                deleteCascade="true"/>
+
         <addForeignKeyConstraint
                 constraintName="fk_users_groups_user_type"
                 baseTableName="users_groups"
@@ -50,7 +52,8 @@
                 baseTableName="users_groups"
                 baseColumnNames="user_id"
                 referencedTableName="user"
-                referencedColumnNames="id"/>
+                referencedColumnNames="id"
+                deleteCascade="true"/>
     </changeSet>
 
 
