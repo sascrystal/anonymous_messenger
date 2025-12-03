@@ -8,8 +8,8 @@
             <tableExists tableName="users_groups"/>
         </not>
     </preConditions>
-    <changeSet id="2025-03-12--0005-users_groups" author="Valery Klotchenko">
-        <createTable tableName="users_groups">
+    <changeSet id="2025-03-12--0005-user_group" author="Valery Klotchenko">
+        <createTable tableName="user_group">
 
             <column name="group_id"
                     type="int"
@@ -34,7 +34,7 @@
 
         <addForeignKeyConstraint
                 constraintName="fk_users_groups_group_id"
-                baseTableName="users_groups"
+                baseTableName="user_group"
                 baseColumnNames="group_id"
                 referencedTableName="group"
                 referencedColumnNames="id"
@@ -42,14 +42,14 @@
 
         <addForeignKeyConstraint
                 constraintName="fk_users_groups_user_type"
-                baseTableName="users_groups"
+                baseTableName="user_group"
                 baseColumnNames="type_user"
                 referencedTableName="user_type"
                 referencedColumnNames="name"/>
 
         <addForeignKeyConstraint
                 constraintName="fk_users_groups_user_id"
-                baseTableName="users_groups"
+                baseTableName="user_group"
                 baseColumnNames="user_id"
                 referencedTableName="user"
                 referencedColumnNames="id"

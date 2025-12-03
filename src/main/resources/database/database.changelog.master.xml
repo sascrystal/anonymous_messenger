@@ -8,6 +8,6 @@
     <include file="/database/1.0/2025-03-12--0002-group.xml"/>
     <include file="/database/1.0/2025-03-12--0003-message.xml"/>
     <include file="/database/1.0/2025-03-12--0004-user_type.xml"/>
-    <include file="/database/1.0/2025-03-12--0005-users_groups.xml"/>
+    <include file="/database/1.0/2025-03-12--0005-user_group.xml"/>
     <include file="/database/1.0/2025-03-12--0006-invitation.xml"/>
 </databaseChangeLog>

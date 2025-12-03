@@ -34,7 +34,7 @@
             </column>
 
             <column name="date"
-                    type="datetime">
+                    type="timestamp">
                 <constraints nullable="false"/>
             </column>
 
