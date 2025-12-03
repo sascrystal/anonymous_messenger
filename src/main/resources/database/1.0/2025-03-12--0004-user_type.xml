@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext ="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog-ext.xsd">
+    <preConditions>
+        <not>
+            <tableExists tableName="user_type"/>
+        </not>
+    </preConditions>
+    <changeSet id="2025-03-12--0004-user_type" author="Valery Klotchenko">
+        <createTable tableName="user_type">
+
+            <column name="name"
+                    type="varchar(250)">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

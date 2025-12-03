@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext ="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog-ext.xsd">
+    <preConditions>
+        <not>
+            <tableExists tableName="message"/>
+        </not>
+    </preConditions>
+    <changeSet id="2025-03-12--0003-message" author="Valery Klotchenko">
+        <createTable tableName="message">
+
+            <column name="id"
+                    type="int"
+                    autoIncrement="true">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+
+            <column name="content"
+                    type="varchar(500)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="author_id"
+                    type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="group_id"
+                    type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date"
+                    type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addForeignKeyConstraint
+                constraintName="fk_message_user_id"
+                baseTableName="message"
+                baseColumnNames="author_id"
+                referencedTableName="user"
+                referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint
+                constraintName="fk_message_group_id"
+                baseTableName="message"
+                baseColumnNames="group_id"
+                referencedTableName="group"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+
+</databaseChangeLog>

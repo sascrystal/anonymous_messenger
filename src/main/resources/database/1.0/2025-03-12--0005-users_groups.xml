@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext ="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog-ext.xsd">
+    <preConditions>
+        <not>
+            <tableExists tableName="users_groups"/>
+        </not>
+    </preConditions>
+    <changeSet id="2025-03-12--0005-users_groups" author="Valery Klotchenko">
+        <createTable tableName="users_groups">
+
+            <column name="group_id"
+                    type="int"
+                    autoIncrement="true">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+
+            <column name="user_id"
+                    type="varchar(100)">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+
+            <column name="type_user"
+                    type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+
+
+        </createTable>
+
+        <addForeignKeyConstraint
+                constraintName="fk_users_groups_group_id"
+                baseTableName="users_groups"
+                baseColumnNames="group_id"
+                referencedTableName="group"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                constraintName="fk_users_groups_user_type"
+                baseTableName="users_groups"
+                baseColumnNames="type_user"
+                referencedTableName="user_type"
+                referencedColumnNames="name"/>
+
+        <addForeignKeyConstraint
+                constraintName="fk_users_groups_user_id"
+                baseTableName="users_groups"
+                baseColumnNames="user_id"
+                referencedTableName="user"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+
+
+
+</databaseChangeLog>

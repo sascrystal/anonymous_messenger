@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext ="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog-ext.xsd">
+    <preConditions>
+        <not>
+            <tableExists tableName="invitation"/>
+        </not>
+    </preConditions>
+    <changeSet id="2025-03-12--0006-invitation" author="Valery Klotchenko">
+        <createTable tableName="invitation">
+
+            <column name="group_id"
+                    type="int"
+                    autoIncrement="true">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+
+            <column name="host_id"
+                    type="varchar(100)">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+
+            <column name="new_user_id"
+                    type="varchar(100)">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+
+            <column name="private_key_for_group"
+                    type="text">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="public_key_for_group"
+                    type="text">
+                <constraints nullable="false"/>
+            </column>
+
+
+        </createTable>
+        <addForeignKeyConstraint
+                constraintName="fk_invitation_host_id"
+                baseTableName="invitation"
+                baseColumnNames="host_id"
+                referencedTableName="user"
+                referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint
+                constraintName="fk_invitation_group_id"
+                baseTableName="invitation"
+                baseColumnNames="group_id"
+                referencedTableName="group"
+                referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint
+                constraintName="fk_invitation_new_user_id"
+                baseTableName="invitation"
+                baseColumnNames="new_user_id"
+                referencedTableName="user"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+
+</databaseChangeLog>
