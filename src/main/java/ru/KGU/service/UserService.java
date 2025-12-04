@@ -11,5 +11,7 @@ public interface UserService {
     User updateUser(User user);
     List<User> getUsersByGroup(Group group);
     void deleteUser(String id);
+    Boolean isUserExist(String id);
+    Boolean passwordIsCorrect(String id, String password);
 
 }

@@ -1,6 +1,7 @@
 package ru.KGU.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.KGU.domain.Group;
 import ru.KGU.domain.User;
@@ -15,9 +16,11 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserGroupRepository userGroupRepository;
+    private final PasswordEncoder getPasswordEncoder;
 
     @Override
     public User createUser(User user) {
+        user.setPassword(getPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -41,5 +44,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(String id) {
         userRepository.deleteById(id);
+    }
+
+
+    @Override
+    public Boolean isUserExist(String id) {
+        User user = getUser(id);
+        return user != null;
+    }
+
+    @Override
+    public Boolean passwordIsCorrect(String id, String password) {
+        User user = getUser(id);
+        String encodedPassword = getPasswordEncoder.encode(password);
+        return user.getPassword().equals(encodedPassword);
     }
 }
