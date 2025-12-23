@@ -8,7 +8,6 @@ import ru.KGU.domain.UserGroup;
 import ru.KGU.domain.UserType;
 import ru.KGU.repository.GroupRepository;
 import ru.KGU.repository.UserGroupRepository;
-import ru.KGU.repository.UserRepository;
 import ru.KGU.repository.UserTypeRepository;
 
 import java.util.List;
@@ -18,12 +17,14 @@ import java.util.List;
 public class GroupServiceImpl implements GroupService {
     private final GroupRepository groupRepository;
     private final UserGroupRepository userGroupRepository;
-    private final UserService userService;
+    private final UserGroupService userGroupService;
+    private final UserTypeRepository userTypeRepository;
 
     @Override
     public Group createGroup(Group group, User host) {
         UserType userType = userTypeRepository.findByName("Admin");
-        User
+        UserGroup userGroup  = UserGroup.builder().userType(userType).user(host).group(group).build();
+        userGroupService.createUserGroup(userGroup);
         return groupRepository.save(group);
     }
 
