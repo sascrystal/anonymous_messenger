@@ -6,7 +6,7 @@ import ru.KGU.domain.User;
 import java.util.List;
 
 public interface GroupService {
-    Group createGroup(Group group);
+    Group createGroup(Group group, User host);
     Group getGroup(int id);
     Group updateGroup(Group group);
     List<Group> getAllGroupsByUser(User user);
