@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.KGU.domain.*;
 import ru.KGU.repository.InvitationRepository;
+
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class InvitationServiceImpl implements InvitationService {
@@ -14,8 +17,13 @@ public class InvitationServiceImpl implements InvitationService {
     private final  UserTypeService userTypeService;
 
     @Override
-    public Invitation getInvitationService(InvitationId invitationId) {
-        return invitationRepository.findByHostAndUserAndGroup(invitationId.getHost(),invitationId.getUser(),invitationId.getGroup());
+    public List<Invitation> getSentInvitationsByUserId(String userId) {
+        return invitationRepository.findByHost(userService.getUser(userId));
+    }
+
+    @Override
+    public List<Invitation> getInvitationsByUserId(String userId) {
+        return invitationRepository.findByUser(userService.getUser(userId)) ;
     }
 
     @Override
