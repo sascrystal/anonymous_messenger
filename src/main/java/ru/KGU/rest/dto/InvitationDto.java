@@ -3,8 +3,6 @@ package ru.KGU.rest.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import ru.KGU.domain.Group;
-import ru.KGU.domain.User;
 
 @AllArgsConstructor
 @Data

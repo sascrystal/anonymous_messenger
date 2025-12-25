@@ -16,15 +16,16 @@ public class UserDtoMapper {
 
     public UserDto toDto(User user) {
         if (user.getGroups() == null) {
-            return  UserDto.builder().id(user.getId()).name(user.getName()).build();
+            return UserDto.builder().id(user.getId()).name(user.getName()).build();
         }
         List<UserGroupDto> userGroupDtos = user.getGroups().stream().map(userGroupDtoMapper::toDto).toList();
-        return  UserDto.builder().id(user.getId()).name(user.getName()).userGroupDtos(userGroupDtos).build();
+        return UserDto.builder().id(user.getId()).name(user.getName()).userGroupDtos(userGroupDtos).build();
 
 
     }
+
     public User toDomainObject(UserDto userDto) {
-        if(userDto.getUserGroupDtos() == null){
+        if (userDto.getUserGroupDtos() == null) {
             return User.builder()
                     .id(userDto.getId())
                     .name(userDto.getName())

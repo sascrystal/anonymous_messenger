@@ -7,8 +7,12 @@ import java.util.List;
 
 public interface MessageService {
     Message getMessage(int id);
+
     Message updateMessage(Message message);
+
     Message createMessage(Message message);
+
     List<Message> getMessageByGroupSortedByDate(Group group);
+
     void deleteMessage(int id);
 }

@@ -7,7 +7,6 @@ import ru.KGU.domain.UserGroup;
 import ru.KGU.rest.dto.GroupDto;
 import ru.KGU.rest.dto.UserGroupDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -35,14 +34,14 @@ public class GroupDtoMapper {
     }
 
     public Group toDomainObject(GroupDto groupDto) {
-        if(groupDto.getUserGroupsDto() == null) {
+        if (groupDto.getUserGroupsDto() == null) {
             return Group.builder()
                     .id(groupDto.getId())
                     .name(groupDto.getName())
                     .description(groupDto.getDescription())
                     .build();
         }
-        List<UserGroup> userGroups  =groupDto.getUserGroupsDto().stream().map(userGroupDtoMapper::toDomainObject).toList();
+        List<UserGroup> userGroups = groupDto.getUserGroupsDto().stream().map(userGroupDtoMapper::toDomainObject).toList();
         return Group.builder()
                 .id(groupDto.getId())
                 .name(groupDto.getName())

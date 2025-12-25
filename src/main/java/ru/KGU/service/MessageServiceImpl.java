@@ -10,11 +10,13 @@ import ru.KGU.repository.MessageRepository;
 
 import java.util.Comparator;
 import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class MessageServiceImpl implements MessageService {
     private final MessageRepository messageRepository;
     private final UserGroupService userGroupService;
+
     @Override
     public Message getMessage(int id) {
         return messageRepository.findById(id);
@@ -27,8 +29,8 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Message createMessage(Message message) {
-        UserGroup userGroup = userGroupService.getUserGroup(new UserGroupId(message.getGroup(),message.getAuthor()));
-        if(userGroup == null) {
+        UserGroup userGroup = userGroupService.getUserGroup(new UserGroupId(message.getGroup(), message.getAuthor()));
+        if (userGroup == null) {
             return null;
         }
         return messageRepository.save(message);

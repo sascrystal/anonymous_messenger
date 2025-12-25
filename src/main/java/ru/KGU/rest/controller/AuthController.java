@@ -6,13 +6,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 import ru.KGU.rest.dto.JwtAuthenticationDto;
 import ru.KGU.rest.dto.RefreshTokenDto;
 import ru.KGU.rest.dto.UserCredentialsDto;
 import ru.KGU.service.UserService;
-
-import javax.naming.AuthenticationException;
 
 @RequiredArgsConstructor
 @RestController

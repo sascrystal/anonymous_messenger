@@ -7,6 +7,7 @@ import ru.KGU.domain.Group;
 public interface GroupRepository extends JpaRepository<Group, Integer> {
 
     void deleteById(int id);
+
     Group findById(int id);
 
 }

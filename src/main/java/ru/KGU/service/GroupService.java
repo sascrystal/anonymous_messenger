@@ -7,9 +7,13 @@ import java.util.List;
 
 public interface GroupService {
     Group createGroup(Group group, User host);
+
     Group getGroup(int id);
+
     Group updateGroup(Group group);
+
     List<Group> getAllGroupsByUser(User user);
+
     void deleteGroup(int id);
 
 }

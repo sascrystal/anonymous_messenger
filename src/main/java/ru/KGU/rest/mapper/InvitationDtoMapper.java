@@ -3,7 +3,6 @@ package ru.KGU.rest.mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.KGU.domain.Invitation;
-import ru.KGU.domain.InvitationId;
 import ru.KGU.rest.dto.InvitationDto;
 import ru.KGU.service.GroupService;
 import ru.KGU.service.UserService;
@@ -25,6 +24,7 @@ public class InvitationDtoMapper {
                 .privateKey(invitation.getPrivateKeyForGroup()).build();
 
     }
+
     public Invitation toDomainObject(InvitationDto invitationDto) {
         return Invitation.builder()
                 .host(userService.getUser(invitationDto.getHostId()))

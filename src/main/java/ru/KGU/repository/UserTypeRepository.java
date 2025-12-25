@@ -5,5 +5,6 @@ import ru.KGU.domain.UserType;
 
 public interface UserTypeRepository extends JpaRepository<UserType, Integer> {
     UserType findByName(String name);
+
     void deleteByName(String name);
 }

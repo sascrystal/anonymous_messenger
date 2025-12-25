@@ -23,12 +23,12 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Group createGroup(Group group, User host) {
-        if(host == null){
+        if (host == null) {
             return null;
         }
         UserType userType = userTypeRepository.findByName("ADMIN");
         List<UserGroup> userGroups = new ArrayList<>();
-        UserGroup userGroup  = UserGroup.builder().userType(userType).user(host).group(group).build();
+        UserGroup userGroup = UserGroup.builder().userType(userType).user(host).group(group).build();
         userGroups.add(userGroup);
         group.setUsers(userGroups);
         return groupRepository.save(group);

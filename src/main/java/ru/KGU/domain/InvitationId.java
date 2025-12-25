@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+
 @EqualsAndHashCode
 @Data
 @AllArgsConstructor
