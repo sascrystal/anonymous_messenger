@@ -10,9 +10,9 @@ import ru.KGU.domain.User;
 @Data
 @Builder
 public class InvitationDto {
-    private UserDto host;
-    private UserDto user;
-    private GroupDto group;
+    private String hostId;
+    private String newUserId;
+    private int groupId;
     private String publicKey;
     private String privateKey;
 }

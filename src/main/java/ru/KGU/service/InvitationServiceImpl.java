@@ -1,11 +1,17 @@
 package ru.KGU.service;
 
-import ru.KGU.domain.Invitation;
-import ru.KGU.domain.InvitationId;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+import ru.KGU.domain.*;
 import ru.KGU.repository.InvitationRepository;
-
+@Service
+@AllArgsConstructor
 public class InvitationServiceImpl implements InvitationService {
-    private InvitationRepository invitationRepository;
+    private final InvitationRepository invitationRepository;
+    private final UserGroupService userGroupService;
+    private final UserService userService;
+    private final GroupService groupService;
+    private final  UserTypeService userTypeService;
 
     @Override
     public Invitation getInvitationService(InvitationId invitationId) {
@@ -14,6 +20,11 @@ public class InvitationServiceImpl implements InvitationService {
 
     @Override
     public Invitation createInvitation(Invitation invitation) {
+        UserGroup userGroupHost = userGroupService.getUserGroup(new UserGroupId(invitation.getGroup(),invitation.getHost()));
+        UserGroup userGroupNewUser = userGroupService.getUserGroup(new UserGroupId(invitation.getGroup(),invitation.getUser()));
+        if ( userGroupHost == null || userGroupNewUser != null || !userGroupHost.getUserType().getName().equals( "ADMIN") ) {
+            return null;
+        }
         return invitationRepository.save(invitation);
     }
 

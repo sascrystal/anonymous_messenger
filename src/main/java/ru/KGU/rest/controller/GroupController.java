@@ -29,7 +29,5 @@ public class GroupController {
     public List<GroupDto> getGroup(@PathVariable String id) {
         User user = userService.getUser(id);
         return groupService.getAllGroupsByUser(user).stream().map(groupDtoMapper::toDto).toList();
-
-
     }
 }
