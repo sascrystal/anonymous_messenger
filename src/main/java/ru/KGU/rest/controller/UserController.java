@@ -19,11 +19,17 @@ public class UserController {
     private final UserService userService;
     private final GroupService groupService;
     private final UserDtoMapper userDtoMapper;
-    @PostMapping("/create_user")
+    @PostMapping("/registration")
     public UserDto createUser(@RequestBody UserDto userDto) {
         User user = userDtoMapper.toDomainObject(userDto);
-        userService.createUser(user);
-        return userDtoMapper.toDto(user);
+        if(userService.getUser(user.getId()) == null) {
+            return userDtoMapper.toDto(userService.createUser(user));
+        }
+        return null;
+    }
+    @GetMapping("/{id}")
+    public UserDto getUser(@PathVariable String id) {
+        return userDtoMapper.toDto(userService.getUser(id));
     }
 
 

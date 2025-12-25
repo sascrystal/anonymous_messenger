@@ -9,7 +9,7 @@
         </not>
     </preConditions>
     <changeSet id="2025-03-12--0002-group" author="Valery Klotchenko">
-        <createTable tableName="group">
+        <createTable tableName="group_for_users">
 
             <column name="id"
                     type="int"

@@ -5,16 +5,21 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import ru.KGU.domain.UserType;
+import ru.KGU.repository.UserTypeRepository;
 import ru.KGU.rest.dto.UserTypeDto;
 
 @RequiredArgsConstructor
 @Component
 public class UserTypeDtoMapper {
-    public  UserTypeDto toDto(UserType userType) {
+    private final UserTypeRepository userTypeRepository;  // ← ДОБАВЬ
+
+    public UserTypeDto toDto(UserType userType) {
         return new UserTypeDto(userType.getName());
     }
 
-    public  UserType toDomainObject(UserTypeDto userTypeDto){
-        return UserType.builder().name(userTypeDto.getName()).build();
+    public UserType toDomainObject(UserTypeDto userTypeDto) {
+        // Ищем существующий UserType
+        return userTypeRepository.findByName(userTypeDto.getName());
+
     }
 }

@@ -22,6 +22,7 @@ public class AuthController {
 
     @PostMapping("/sign_in")
     public ResponseEntity<JwtAuthenticationDto> signIn(@RequestBody UserCredentialsDto userCredentialsDto) {
+
         JwtAuthenticationDto jwtAuthenticationDto = userService.singIn(userCredentialsDto);
         return ResponseEntity.ok(jwtAuthenticationDto);
     }

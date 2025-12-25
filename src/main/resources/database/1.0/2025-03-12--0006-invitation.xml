@@ -45,7 +45,7 @@
                 constraintName="fk_invitation_host_id"
                 baseTableName="invitation"
                 baseColumnNames="host_id"
-                referencedTableName="user"
+                referencedTableName="app_user"
                 referencedColumnNames="id"
                 deleteCascade="true"/>
 
@@ -53,7 +53,7 @@
                 constraintName="fk_invitation_group_id"
                 baseTableName="invitation"
                 baseColumnNames="group_id"
-                referencedTableName="group"
+                referencedTableName="group_for_users"
                 referencedColumnNames="id"
                 deleteCascade="true"/>
 
@@ -61,7 +61,7 @@
                 constraintName="fk_invitation_new_user_id"
                 baseTableName="invitation"
                 baseColumnNames="new_user_id"
-                referencedTableName="user"
+                referencedTableName="app_user"
                 referencedColumnNames="id"
                 deleteCascade="true"/>
     </changeSet>

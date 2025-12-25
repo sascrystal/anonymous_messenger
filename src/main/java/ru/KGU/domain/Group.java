@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name ="group_for_users")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

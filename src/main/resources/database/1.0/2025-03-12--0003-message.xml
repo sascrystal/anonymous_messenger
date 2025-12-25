@@ -44,7 +44,7 @@
                 constraintName="fk_message_user_id"
                 baseTableName="message"
                 baseColumnNames="author_id"
-                referencedTableName="user"
+                referencedTableName="app_user"
                 referencedColumnNames="id"
         onDelete="SET NULL"/>
 
@@ -52,7 +52,7 @@
                 constraintName="fk_message_group_id"
                 baseTableName="message"
                 baseColumnNames="group_id"
-                referencedTableName="group"
+                referencedTableName="group_for_users"
                 referencedColumnNames="id"
         deleteCascade="true"/>
     </changeSet>
