@@ -47,4 +47,13 @@ public class RSAServiceTest {
         assertThat(keyPair.getPublic()).isNotEqualTo(keyPair2.getPublic());
         assertThat(keyPair.getPrivate()).isNotEqualTo(keyPair2.getPrivate());
     }
+    @Test
+    @DisplayName("Должно выходить один и тот же текст с lower case и upper case")
+    void shouldRSACommunicationWorkWithLowerCaseAndUpperCase() throws Exception {
+        KeyPair keyPair = rsaService.generateKeys(2048);
+        String text = "изначальный текст С БоЛьШиМи";
+        byte[] bytes = rsaService.encrypt(text, keyPair.getPublic());
+        String decryptedText = rsaService.decrypt(bytes, keyPair.getPrivate());
+        assertThat(decryptedText).isEqualTo(text);
+    }
 }

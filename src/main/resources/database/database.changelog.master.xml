@@ -10,4 +10,6 @@
     <include file="/database/1.0/2025-03-12--0004-user_type.xml"/>
     <include file="/database/1.0/2025-03-12--0005-user_group.xml"/>
     <include file="/database/1.0/2025-03-12--0006-invitation.xml"/>
+
+    <include file="database/data/2025-24-12--00001-user_type-data.xml"/>
 </databaseChangeLog>

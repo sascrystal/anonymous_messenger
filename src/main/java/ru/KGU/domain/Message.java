@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -32,9 +31,6 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = false, foreignKey = @ForeignKey(name = "fk_message_group_id"))
     private Group group;
-
-
-
 
 
 }

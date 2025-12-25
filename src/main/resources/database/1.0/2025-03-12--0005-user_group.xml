@@ -36,7 +36,7 @@
                 constraintName="fk_users_groups_group_id"
                 baseTableName="user_group"
                 baseColumnNames="group_id"
-                referencedTableName="group"
+                referencedTableName="group_for_users"
                 referencedColumnNames="id"
                 deleteCascade="true"/>
 
@@ -51,7 +51,7 @@
                 constraintName="fk_users_groups_user_id"
                 baseTableName="user_group"
                 baseColumnNames="user_id"
-                referencedTableName="user"
+                referencedTableName="app_user"
                 referencedColumnNames="id"
                 deleteCascade="true"/>
     </changeSet>

@@ -1,20 +1,16 @@
 package ru.KGU.rest.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Builder
-public class UserGroupDto {
+public class InvitationDto {
+    private String hostId;
+    private String newUserId;
     private int groupId;
-    private String userId;
-    private UserTypeDto userTypeDto;
-
-
+    private String publicKey;
+    private String privateKey;
 }

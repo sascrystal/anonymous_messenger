@@ -10,8 +10,12 @@ import java.util.List;
 
 public interface UserGroupRepository extends JpaRepository<UserGroup, Integer> {
     void deleteByUserAndGroup(User user, Group group);
+
     UserGroup findByUserAndGroup(User user, Group group);
+
     List<UserGroup> findByUser(User user);
+
     List<UserGroup> findByGroup(Group group);
+
     List<UserGroup> findByGroupAndUserType(Group group, UserType userType);
 }

@@ -9,7 +9,7 @@
         </not>
     </preConditions>
     <changeSet id="2025-03-12--0001-user" author="Valery Klotchenko">
-        <createTable tableName="user">
+        <createTable tableName="app_user">
 
             <column name="id"
                     type="varchar(100)">
@@ -27,7 +27,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="recovery_id"
+            <column name="recovery_password"
                     type="varchar(250)">
                 <constraints nullable="false"/>
             </column>

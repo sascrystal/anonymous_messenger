@@ -22,7 +22,7 @@ public class JwtService {
     private String secret;
 
 
-    public JwtAuthenticationDto generateAuthToken(String id){
+    public JwtAuthenticationDto generateAuthToken(String id) {
         JwtAuthenticationDto jwtDto = new JwtAuthenticationDto();
         jwtDto.setToken(generateJwtToken(id));
         jwtDto.setRefreshToken(generateRefreshToken(id));
@@ -46,28 +46,27 @@ public class JwtService {
     }
 
     public boolean validateToken(String token) {
-        try{
+        try {
             Jwts.parser()
                     .verifyWith(getSignInKey())
                     .build()
                     .parseSignedClaims(token)
                     .getPayload();
             return true;
-        }catch (ExpiredJwtException e){
+        } catch (ExpiredJwtException e) {
             LOGGER.error("Expired JWTException", e);
 
-        }catch (UnsupportedJwtException e){
+        } catch (UnsupportedJwtException e) {
             LOGGER.error("Unsupported JWTException", e);
-        }catch (MalformedJwtException e){
+        } catch (MalformedJwtException e) {
             LOGGER.error("Malformed JWTException", e);
-        }catch (SecurityException e){
+        } catch (SecurityException e) {
             LOGGER.error("SecurityException", e);
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.error("Exception", e);
         }
         return false;
     }
-
 
 
     private String generateJwtToken(String id) {
@@ -79,6 +78,7 @@ public class JwtService {
                 .compact();
 
     }
+
     private String generateRefreshToken(String id) {
         Date date = Date.from(LocalDateTime.now().plusDays(1).atZone(ZoneId.systemDefault()).toInstant());
         return Jwts.builder()

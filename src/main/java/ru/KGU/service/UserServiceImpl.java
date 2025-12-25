@@ -16,7 +16,6 @@ import ru.KGU.rest.dto.UserCredentialsDto;
 import ru.KGU.security.Jwt.JwtService;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -89,7 +88,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public JwtAuthenticationDto refreshToken(RefreshTokenDto refreshTokenDto) {
         String refreshToken = refreshTokenDto.getRefreshToken();
-        if(refreshToken != null && jwtService.validateToken(refreshToken)) {
+        if (refreshToken != null && jwtService.validateToken(refreshToken)) {
             User user = getUser(jwtService.getIdFromToken(refreshToken));
             return jwtService.refreshBaseToken(user.getId(), refreshToken);
         }
@@ -100,7 +99,7 @@ public class UserServiceImpl implements UserService {
         User optionalUser = userRepository.findById(userCredentialsDto.getId());
         if (optionalUser != null) {
             User user = optionalUser;
-            if(getPasswordEncoder.matches(userCredentialsDto.getPassword(), user.getPassword())) {
+            if (getPasswordEncoder.matches(userCredentialsDto.getPassword(), user.getPassword())) {
                 return user;
             }
         }

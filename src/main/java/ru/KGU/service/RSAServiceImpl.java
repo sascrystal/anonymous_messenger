@@ -1,10 +1,7 @@
 package ru.KGU.service;
 
 import lombok.AllArgsConstructor;
-import org.bouncycastle.crypto.AsymmetricBlockCipher;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.encodings.PKCS1Encoding;
-import org.bouncycastle.crypto.engines.RSAEngine;
 import org.bouncycastle.crypto.generators.RSAKeyPairGenerator;
 import org.bouncycastle.crypto.params.RSAKeyGenerationParameters;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
@@ -16,6 +13,7 @@ import java.math.BigInteger;
 import java.security.*;
 import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPublicKeySpec;
+
 @Service
 @AllArgsConstructor
 public class RSAServiceImpl implements RSAService {
@@ -62,9 +60,8 @@ public class RSAServiceImpl implements RSAService {
     }
 
 
-
     @Override
-    public  byte[] encrypt(String plainText, PublicKey publicKey) throws Exception{
+    public byte[] encrypt(String plainText, PublicKey publicKey) throws Exception {
         byte[] data = plainText.getBytes();
         Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA-256AndMGF1Padding", "BC");
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
@@ -73,13 +70,12 @@ public class RSAServiceImpl implements RSAService {
     }
 
     @Override
-    public String decrypt(byte[] cipherText, PrivateKey privateKey) throws Exception{
+    public String decrypt(byte[] cipherText, PrivateKey privateKey) throws Exception {
         Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA-256AndMGF1Padding", "BC");
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
         return new String(cipher.doFinal(cipherText));
 
     }
-
 
 
 }
