@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
-                   xmlns:ext ="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog-ext.xsd">
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
     <preConditions>
         <not>
             <tableExists tableName="message"/>
@@ -19,7 +18,7 @@
             </column>
 
             <column name="content"
-                    type="varchar(500)">
+                    type="text">
                 <constraints nullable="false"/>
             </column>
 
@@ -46,7 +45,7 @@
                 baseColumnNames="author_id"
                 referencedTableName="app_user"
                 referencedColumnNames="id"
-        onDelete="SET NULL"/>
+                onDelete="SET NULL"/>
 
         <addForeignKeyConstraint
                 constraintName="fk_message_group_id"
@@ -54,7 +53,7 @@
                 baseColumnNames="group_id"
                 referencedTableName="group_for_users"
                 referencedColumnNames="id"
-        deleteCascade="true"/>
+                deleteCascade="true"/>
     </changeSet>
 
 

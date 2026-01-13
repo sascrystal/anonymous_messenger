@@ -3,9 +3,9 @@
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="2025-24-12--0001-user_type-data" author="Valery Klotchenko">
-        <loadData tableName="user_type"
-                  file="database/data/csv/2025-24-12--0001-user_type-data.csv"
+    <changeSet id="2025-24-12--0002-user-data" author="Valery Klotchenko">
+        <loadData tableName="app_user"
+                  file="database/data/csv/2025-24-12--0002-user-data.csv"
                   separator=";"
                   quotchar='"'
                   encoding="UTF-8"/>

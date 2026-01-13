@@ -7,6 +7,7 @@ import ru.KGU.rest.dto.InvitationDto;
 import ru.KGU.rest.mapper.InvitationDtoMapper;
 import ru.KGU.service.InvitationService;
 
+import java.security.KeyPair;
 import java.util.List;
 import java.util.Objects;
 

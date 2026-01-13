@@ -26,7 +26,7 @@ public class Invitation {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id", nullable = false, foreignKey = @ForeignKey(name = "fk_invitation_group_id"))
+    @JoinColumn(name = "group_id", nullable =    false, foreignKey = @ForeignKey(name = "fk_invitation_group_id"))
     private Group group;
 
 

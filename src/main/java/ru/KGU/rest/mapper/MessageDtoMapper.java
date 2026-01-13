@@ -28,6 +28,7 @@ public class MessageDtoMapper {
         return Message.builder()
                 .id(messageDto.getId())
                 .date(messageDto.getDate())
+                .content(messageDto.getContent())
                 .group(groupService.getGroup(messageDto.getId()))
                 .author(userService.getUser(messageDto.getAuthorId())).build();
     }
