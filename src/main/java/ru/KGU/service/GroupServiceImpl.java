@@ -18,7 +18,6 @@ import java.util.List;
 public class GroupServiceImpl implements GroupService {
     private final GroupRepository groupRepository;
     private final UserGroupRepository userGroupRepository;
-    private final UserGroupService userGroupService;
     private final UserTypeRepository userTypeRepository;
 
     @Override
@@ -30,7 +29,7 @@ public class GroupServiceImpl implements GroupService {
         List<UserGroup> userGroups = new ArrayList<>();
         UserGroup userGroup = UserGroup.builder().userType(userType).user(host).group(group).build();
         userGroups.add(userGroup);
-        group.setUsers(userGroups);
+        group.setUsers(userGroups); 
         return groupRepository.save(group);
     }
 
